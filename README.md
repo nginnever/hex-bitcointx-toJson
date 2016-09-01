@@ -5,8 +5,17 @@
 
 ##Install
 
+// TODO: export module and api
 ```
 npm i hex-bitcointx-tojson
+```
+
+Current install process
+
+```
+git clone https://github.com/nginnever/hex-bitcointx-toJson.git
+cd hex-bitcointx-toJson
+npm i
 ```
 
 ##Usage
