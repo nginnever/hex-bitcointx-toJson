@@ -23,8 +23,6 @@ function inputs (bytes) {
   const inCount = parseInt(bytes[4], 16)
 
   for (var i = 0; i < inCount; i++) {
-  	templen = parseInt(bytes[index + 36], 16)
-    index += (36 + templen + 4 + 1)
 
     var prev = toLittleEndian(bytes.slice(5, 41)).join('')
     const script = bytes.slice(42, 149).join('')
@@ -37,9 +35,11 @@ function inputs (bytes) {
     resArr.push({
       output_index: outindex,
       txid: prev,
-      script: script,
+      script_sig: script,
       sequence: seq
     })
+    templen = parseInt(bytes[index + 36], 16)
+    index += (36 + templen + 4 + 1)
         //outputStart = 154
   }
   outputStart = index + 1
@@ -96,7 +96,7 @@ function myProgram (bytecode) {
 
   // var test = toLittleEndian('0xd8be4b8f39670aec2024f6e6fe1b4a7a3009eb91c12f141a25eab7a77a2760f5')
   
-  console.log(output)
+  console.log(JSON.stringify(output, null, 3) + '\n')
 }
 
 // CLI exposed
