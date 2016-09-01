@@ -72,7 +72,7 @@ function locktime (bytes) {
 	return parseInt(bytes.slice(bytes.length - 4, bytes.length).join(''), 16)
 }
 // Main function
-function convert (bytecode) {
+function myProgram (bytecode) {
 	var output = {}
 	var inputLen = bytecode.length
 	if (!inputLen || inputLen % 2)
@@ -104,4 +104,4 @@ function convert (bytecode) {
 }
 
 // CLI exposed
-convert(process.argv[2])
+myProgram(process.argv[2])
