@@ -22,18 +22,28 @@ node myprogram.js 0100000001d8be4b8f39670aec2024f6e6fe1b4a7a3009eb91c12f141a25ea
 
 >> output
 
-{ version: 1,
-  inputs: 
-   [ { output_index: 0,
-       prev_hash: 'f560277aa7b7ea251a142fc191eb09307a4a1bfee6f62420ec0a67398f4bbed8',
-       script: '483045022100bd6027b4015c3701bd2ba949af4cdd16bd88a15a5a6bb39b06aa77967d2182ac02202b7175221b90dfc67fa402e25f963b6459a9aa6259b10c7b0fbb0cce764ecac60121027b13af064c43cee9dac1c1010e2e1f55a17363c161d0b9017ad6dff4aee2f0b1',
-       sequence: 4294967295 } ],
-  outputs: 
-   [ { value: 357000000,
-       pk_script: '76a9143ba02668541a203b88a8fa87e3b9655d95700a1488ac' },
-     { value: 134903541,
-       pk_script: '76a914eb591b4a5485656f72fa2dee496821611b33a85888ac' } ],
-  lock_time: 0 }
+{
+   "version": 1,
+   "inputs": [
+      {
+         "output_index": 0,
+         "txid": "f560277aa7b7ea251a142fc191eb09307a4a1bfee6f62420ec0a67398f4bbed8",
+         "script_sig": "483045022100bd6027b4015c3701bd2ba949af4cdd16bd88a15a5a6bb39b06aa77967d2182ac02202b7175221b90dfc67fa402e25f963b6459a9aa6259b10c7b0fbb0cce764ecac60121027b13af064c43cee9dac1c1010e2e1f55a17363c161d0b9017ad6dff4aee2f0b1",
+         "sequence": 4294967295
+      }
+   ],
+   "outputs": [
+      {
+         "value": 357000000,
+         "pk_script": "76a9143ba02668541a203b88a8fa87e3b9655d95700a1488ac"
+      },
+      {
+         "value": 134903541,
+         "pk_script": "76a914eb591b4a5485656f72fa2dee496821611b33a85888ac"
+      }
+   ],
+   "lock_time": 0
+}
 ```
 
 ##Bytecode
