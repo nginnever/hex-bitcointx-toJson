@@ -1,5 +1,7 @@
 'use strict'
 
+let outputStart
+
 // Internal functions
 function toLittleEndian (bytearr) {
   return bytearr.reverse()
@@ -13,13 +15,17 @@ function version (bytes) {
 
 function inputs (bytes) {
   var resArr = []
-  let index
-  let len
+  var index = 5
+  var scriptlen
+  var templen
   // In counter 
   // next 1-9 bytes encode the number of input txs
   const inCount = parseInt(bytes[4], 16)
-  
-  if (inCount === 1) {
+
+  for (var i = 0; i < inCount; i++) {
+  	templen = parseInt(bytes[index + 36], 16)
+    index += (36 + templen + 4 + 1)
+
     var prev = toLittleEndian(bytes.slice(5, 41)).join('')
     const script = bytes.slice(42, 149).join('')
     var outindex = prev.slice(0, 8)
@@ -34,28 +40,18 @@ function inputs (bytes) {
       script: script,
       sequence: seq
     })
-
-  } else {
-    // TODO: Handle more inputs
-    // for (var i = 0; i < inCount; i++) {
-    // 	if (i === 0) {
-    //     index = 4
-    //     len = parseInt(bytes[41], 16)
-    // 	}
-    // 	index += (36 + 4 + 1 + len + 4 - 3)  
-    //   // get the script sig length
-    //   len = bytes[index]
+        //outputStart = 154
   }
-
+  outputStart = index + 1
   return resArr
 }
 
 function outputs (bytes) {
   var outputs = []
-  var index = 154
+  var index = outputStart
   var pk_script_len
   // This index should be variable
-  var numOutputs = parseInt(bytes[153], 16)
+  var numOutputs = parseInt(bytes[index -1], 16)
   
   for (var i = 0; i < numOutputs; i++) {
     pk_script_len = parseInt(bytes[index + 8], 16)
@@ -105,3 +101,6 @@ function myProgram (bytecode) {
 
 // CLI exposed
 myProgram(process.argv[2])
+
+// 0100000002d8be4b8f39670aec2024f6e6fe1b4a7a3009eb91c12f141a25eab7a77a2760f5000000006b483045022100bd6027b4015c3701bd2ba949af4cdd16bd88a15a5a6bb39b06aa77967d2182ac02202b7175221b90dfc67fa402e25f963b6459a9aa6259b10c7b0fbb0cce764ecac60121027b13af064c43cee9dac1c1010e2e1f55a17363c161d0b9017ad6dff4aee2f0b1ffffffffd8be4b8f39670aec2024f6e6fe1b4a7a3009eb91c12f141a25eab7a77a2760f5000000006b483045022100bd6027b4015c3701bd2ba949af4cdd16bd88a15a5a6bb39b06aa77967d2182ac02202b7175221b90dfc67fa402e25f963b6459a9aa6259b10c7b0fbb0cce764ecac60121027b13af064c43cee9dac1c1010e2e1f55a17363c161d0b9017ad6dff4aee2f0b1ffffffff0240634715000000001976a9143ba02668541a203b88a8fa87e3b9655d95700a1488acf5760a08000000001976a914eb591b4a5485656f72fa2dee496821611b33a85888ac00000000
+
