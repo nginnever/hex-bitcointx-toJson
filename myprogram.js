@@ -24,14 +24,16 @@ function inputs (bytes) {
 
   for (var i = 0; i < inCount; i++) {
 
-    var prev = toLittleEndian(bytes.slice(5, 41)).join('')
-    const script = bytes.slice(42, 149).join('')
+    var prev = toLittleEndian(bytes.slice(index, index + 36)).join('')
+    var siglen = parseInt(bytes[index + 36], 16)
+    const script = bytes.slice(index + 37, index + 37 + siglen).join('')
     var outindex = prev.slice(0, 8)
-    var seq = bytes.slice(149,153).join('')
+
+    var seq = bytes.slice(index + 37 + siglen, index + 37 + siglen + 4).join('')
     seq = parseInt(seq, 16)
     outindex = parseInt(outindex, 16)
     prev = prev.slice(8, 72)
-
+    
     resArr.push({
       output_index: outindex,
       txid: prev,
