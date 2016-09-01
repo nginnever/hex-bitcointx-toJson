@@ -36,7 +36,8 @@ function inputs (bytes) {
     
     resArr.push({
       output_index: outindex,
-      txid: prev,
+      prev_output: prev,
+      script_len: siglen,
       script_sig: script,
       sequence: seq
     })
@@ -59,6 +60,7 @@ function outputs (bytes) {
     pk_script_len = parseInt(bytes[index + 8], 16)
     outputs.push({
       value: parseInt(toLittleEndian(bytes.slice(index, index + 8)).join(''), 16),
+      script_len: pk_script_len,
       pk_script: bytes.slice(index + 9, index + 9 + pk_script_len).join('')
     })
     index += pk_script_len + 8 + 1 
