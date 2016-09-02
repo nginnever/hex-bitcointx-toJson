@@ -1,5 +1,8 @@
 'use strict'
 
+const sha256 = require('js-sha256')
+const bs58 = require('bs58')
+
 let outputStart
 
 // Internal functions
@@ -28,6 +31,7 @@ function inputs (bytes) {
     var siglen = parseInt(bytes[index + 36], 16)
     const script = bytes.slice(index + 37, index + 37 + siglen).join('')
     var outindex = prev.slice(0, 8)
+    var addr = prev.slice(8, prev.length)
 
     var seq = bytes.slice(index + 37 + siglen, index + 37 + siglen + 4).join('')
     seq = parseInt(seq, 16)
@@ -55,22 +59,37 @@ function outputs (bytes) {
   var pk_script_len
   // This index should be variable
   var numOutputs = parseInt(bytes[index -1], 16)
-  
+
   for (var i = 0; i < numOutputs; i++) {
     pk_script_len = parseInt(bytes[index + 8], 16)
     outputs.push({
       value: parseInt(toLittleEndian(bytes.slice(index, index + 8)).join(''), 16),
       script_len: pk_script_len,
-      pk_script: bytes.slice(index + 9, index + 9 + pk_script_len).join('')
+      pk_script: bytes.slice(index + 9, index + 9 + pk_script_len).join(''),
+      address: deriveAddress(bytes.slice(index + 9, index + 9 + pk_script_len).join(''))
     })
+
     index += pk_script_len + 8 + 1 
   }
+
   return outputs
 }
 
 function locktime (bytes) {
   return parseInt(bytes.slice(bytes.length - 4, bytes.length).join(''), 16)
 }
+
+function deriveAddress(sig) {
+	sig = sig.slice(6, sig.length - 4)
+	sig = '00' + sig
+  var hash1 = sha256(sig)
+  var hash2 = sha256(hash1)
+  sig = sig + hash2.slice(0, 8)
+  var outputAddr = parseInt(sig, 16)
+
+  return bs58.encode(new Buffer(sig, 'hex')).toString()
+}
+
 // Main function
 function myProgram (bytecode) {
   var output = {}

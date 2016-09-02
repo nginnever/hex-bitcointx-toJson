@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/nginnever/hex-bitcointx-toJson/issues"
   },
-  "homepage": "https://github.com/nginnever/hex-bitcointx-toJson#readme"
+  "homepage": "https://github.com/nginnever/hex-bitcointx-toJson#readme",
+  "dependencies": {
+    "bs58": "^3.0.0",
+    "js-sha256": "^0.3.0"
+  }
 }
