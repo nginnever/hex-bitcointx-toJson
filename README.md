@@ -46,12 +46,14 @@ node myprogram.js 0100000001d8be4b8f39670aec2024f6e6fe1b4a7a3009eb91c12f141a25ea
       {
          "value": 357000000,
          "script_len": 25,
-         "pk_script": "76a9143ba02668541a203b88a8fa87e3b9655d95700a1488ac"
+         "pk_script": "76a9143ba02668541a203b88a8fa87e3b9655d95700a1488ac",
+         "address": "16SGijkfCSAeZd37nuNREPqBFtE3Dxe7vg"
       },
       {
          "value": 134903541,
          "script_len": 25,
-         "pk_script": "76a914eb591b4a5485656f72fa2dee496821611b33a85888ac"
+         "pk_script": "76a914eb591b4a5485656f72fa2dee496821611b33a85888ac",
+         "address": "1NTQYKJD7Th6ZUv9trK7mbxmQ678LYR15M"
       }
    ],
    "lock_time": 0
