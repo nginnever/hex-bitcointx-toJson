@@ -60,6 +60,47 @@ node myprogram.js 0100000001d8be4b8f39670aec2024f6e6fe1b4a7a3009eb91c12f141a25ea
 }
 ```
 
+##Example: 2 inputs 2 outputs
+
+```
+node myprogram.js 010000000264e86ab1109d9008e577e6efe1827f903d85a358459b85cf34d985b451b0a6f1010000006a47304402201c2ac1de2e140eeef09a635a6cd790adebcc14a66b1b6fd5c120d5ecf75f19e20220092fcbcf46c3cef01a8a2471492bdbf85e8a60d691d066a38ee44fb5b594912a012102099cd1e94cb0754f428c2d0c3d1f3ea717c58e0c7ba12ba7c5c80a331707ba2fffffffff7f5cbfdf490e55c75ceac8361197ca854eaeb02bba06339cbf7637c25c5abca31a0000006a47304402205cdc47f7fb6e8280e2fd2d71fbec53afd1a8279e230c42db3a9a6fcebb03ecf7022055fc176feda3c5c37089da736f9ace1718b7aef30f0652fc3080678c1de445ae012102099cd1e94cb0754f428c2d0c3d1f3ea717c58e0c7ba12ba7c5c80a331707ba2fffffffff024004fb0b0000000017a914ec7513823205ef2d0db73267b7e9c75feb8df736871df80c00000000001976a9143ba02668541a203b88a8fa87e3b9655d95700a1488ac00000000
+>output
+{
+   "version": 1,
+   "inputs": [
+      {
+         "output_index": 1,
+         "prev_output": "f1a6b051b485d934cf859b4558a3853d907f82e1efe677e508909d10b16ae864",
+         "script_len": 106,
+         "script_sig": "47304402201c2ac1de2e140eeef09a635a6cd790adebcc14a66b1b6fd5c120d5ecf75f19e20220092fcbcf46c3cef01a8a2471492bdbf85e8a60d691d066a38ee44fb5b594912a012102099cd1e94cb0754f428c2d0c3d1f3ea717c58e0c7ba12ba7c5c80a331707ba2f",
+         "sequence": 4294967295
+      },
+      {
+         "output_index": 26,
+         "prev_output": "a3bc5a5cc23776bf9c3306ba2bb0ae4e85ca971136c8ea5cc7550e49dfbf5c7f",
+         "script_len": 106,
+         "script_sig": "47304402205cdc47f7fb6e8280e2fd2d71fbec53afd1a8279e230c42db3a9a6fcebb03ecf7022055fc176feda3c5c37089da736f9ace1718b7aef30f0652fc3080678c1de445ae012102099cd1e94cb0754f428c2d0c3d1f3ea717c58e0c7ba12ba7c5c80a331707ba2f",
+         "sequence": 4294967295
+      }
+   ],
+   "outputs": [
+      {
+         "value": 201000000,
+         "script_len": 23,
+         "pk_script": "a914ec7513823205ef2d0db73267b7e9c75feb8df73687",
+         "address": "1YmzhDeKmAxXEb2a63fZeHoxfafnguc"
+      },
+      {
+         "value": 849949,
+         "script_len": 25,
+         "pk_script": "76a9143ba02668541a203b88a8fa87e3b9655d95700a1488ac",
+         "address": "16SGijkfCSAeZd37nuNREPqBFtE3Dxe7vg"
+      }
+   ],
+   "lock_time": 0
+}
+```
+
 ##Example: 1 input 3 outputs
 
 ```
